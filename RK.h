@@ -9,7 +9,7 @@ typedef enum {
     RK_4
 } Order;
 
-double *rk_single(f2 func, Order order, double x0, double y0, double l, double n);
+double *rk_single(f2 func, Order order, double x0, double y0, double l, size_t n);
 double *rk_double(f3 func, Order order, double x0, double y0, double l, double n);
 
 #endif //DE_SOLVER_RK_H
