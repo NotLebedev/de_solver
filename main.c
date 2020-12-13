@@ -2,32 +2,27 @@
 #include <math.h>
 
 #include "RK.h"
+#include "boundary.h"
 
-double f(double x, double y) {
-    return - y / x;
+double h1(double x) {
+    return -3 * x;
 }
 
-double g1(double t, double x, double y) {
-    return t + x - y * y + 2;
+double h2(double x) {
+    return 2.0;
 }
 
-double g2(double t, double x, double y) {
-    return sin(t - x) + 2.1 * y;
+double h3(double x) {
+    return 1.5;
 }
 
 int main(void) {
-    double *res = rk_single(f, RK_4, 1.0, 3.0, 5.0, 30);
+    f1 coefs[3] = {h1, h2, h3};
+    Vector2D init[3] = {{0.0, 0.5}, {1.0, 1.0}, {1.3, 2.0}};
+    double *res = boundary(0.7, 1.0, coefs, init, 3000);
 
-    Vector2D *res2 = rk_double(g1, g2, RK_4, 0, 1.5, 0, 5.0, 300);
-
-    for (size_t i = 0; i < 301; i++) {
-        //printf("%lf %lf\n", 1.0 + i * (5.0 / 30), res[i]);
-        printf("{%lf, %lf}, ", i * (5.0 / 300), res2[i].x);
-    }
-    printf("\n");
-    for (size_t i = 0; i < 301; i++) {
-        //printf("%lf %lf\n", 1.0 + i * (5.0 / 30), res[i]);
-        printf("{%lf, %lf}, ", i * (5.0 / 300), res2[i].y);
+    for (size_t i = 0; i < 3001; i++) {
+        printf("%lf %lf\n", 0.7 + (1.0 - 0.7) / 3000 * i, res[i]);
     }
     return 0;
 }
