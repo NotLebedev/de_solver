@@ -67,12 +67,15 @@ int main(int argc, char *argv[]) {
             }
         }
     } else {
-        F1 coefs[3] = {functions_coefs[0][0], functions_coefs[0][1], functions_coefs[0][2]};
-        Vector2D init[3] = {{0.0, 0.5}, {1.0, 1.0}, {1.3, 2.0}};
-        double *res = boundary(0.7, 1.0, coefs, init, 3000);
+        double x_0, x_n;
+        unsigned n_steps, function_set;
+        Vector2D init[3];
+        scanf("%u%lf%lf%lf%lf%lf%lf%lf%lf%u", &function_set, &x_0, &x_n, &init[0].x, &init[1].x, &init[2].x,
+              &init[0].y, &init[1].y, &init[2].y, &n_steps);
+        double *res = boundary(x_0, x_n, functions_coefs[function_set - 1], init, n_steps);
 
-        for (size_t i = 0; i < 3001; i++) {
-            printf("%lf %lf\n", 0.7 + (1.0 - 0.7) / 3000 * i, res[i]);
+        for (size_t i = 0; i < n_steps + 1; i++) {
+            printf("%lf %lf\n", x_0 + (x_n - x_0) / n_steps * i, res[i]);
         }
     }
     return 0;
