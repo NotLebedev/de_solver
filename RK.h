@@ -1,6 +1,8 @@
 #ifndef DE_SOLVER_RK_H
 #define DE_SOLVER_RK_H
 
+#include <stddef.h>
+
 typedef double (*f2)(double, double);
 typedef double (*f3)(double, double, double);
 
