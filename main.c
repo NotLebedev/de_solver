@@ -7,16 +7,16 @@ extern f2 functions_single[];
 extern f3 functions_double[][2];
 
 int main(int argc, char *argv[]) {
-    unsigned mode = strtoull(argv[1], NULL, 0);
+    unsigned mode;
+    scanf("%u", &mode);
 
     if (mode == 0) {
-        unsigned equations_cnt = strtoull(argv[2], NULL, 0);
+        unsigned equations_cnt, order;
+        scanf("%u%u", &equations_cnt, &order);
         if (equations_cnt != 1 && equations_cnt != 2) {
             fprintf(stderr, "Поддерживается решение одного ОДУ или системы двух ОДУ\n");
             return 2;
         }
-
-        unsigned order = strtoull(argv[3], NULL, 0);
         if (order != 2 && order != 4) {
             fprintf(stderr, "Поддерживается метод Рунге-Кутты 2 и 4 порядка\n");
             return 2;
