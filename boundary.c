@@ -29,13 +29,13 @@ data_t *boundary(data_t x_0, data_t x_n, F1 eq_coef[3], Vector2D init_coef[3], s
     }
 
     res[n] = (init_coef[2].y * step + init_coef[1].y * beta[n - 1]) / (init_coef[0].y * step +
-            init_coef[1].y - init_coef[1].y * alpha[n - 1]);
+                                                                       init_coef[1].y - init_coef[1].y * alpha[n - 1]);
     for (ssize_t i = n - 1; i >= 0; i--) {
         res[i] = alpha[i] * res[i + 1] + beta[i];
     }
 
     return res;
-error:
+    error:
     free(res);
     free(alpha);
     free(beta);

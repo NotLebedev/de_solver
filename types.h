@@ -6,8 +6,10 @@
 typedef double data_t;
 
 typedef data_t (*F1)(data_t);
-typedef data_t (*F2)(data_t , data_t);
-typedef data_t (*F3)(data_t , data_t , data_t);
+
+typedef data_t (*F2)(data_t, data_t);
+
+typedef data_t (*F3)(data_t, data_t, data_t);
 
 typedef struct {
     data_t x;
