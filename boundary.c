@@ -18,19 +18,19 @@ double *boundary(double x_0, double x_n, f1 eq_coef[3], Vector2D init_coef[3], s
 
     for (size_t i = 1; i < n; i++) {
         // Вычисляем элементы матрицы в i строке
-        double C = 1.0 / (step * step) - eq_coef[0](x_0 + i * step) / (2 * step);
-        double A = 1.0 / (step * step) + eq_coef[0](x_0 + i * step) / (2 * step);
+        double A = 1.0 / (step * step) - eq_coef[0](x_0 + i * step) / (2 * step);
         double B = -2.0 / (step * step) + eq_coef[1](x_0 + i * step);
+        double C = 1.0 / (step * step) + eq_coef[0](x_0 + i * step) / (2 * step);
         double F = eq_coef[2](x_0 + i * step);
 
-        // По общей формуле вычисляем кожффициенты метода прогонки
+        // По общей формуле вычисляем коэффициенты метода прогонки
         alpha[i] = -C / (A * alpha[i - 1] + B);
-        beta[i] = (F - beta[i-1] * A) / (A * alpha[i - 1] + B);
+        beta[i] = (F - beta[i - 1] * A) / (A * alpha[i - 1] + B);
     }
 
     res[n] = (init_coef[2].y * step + init_coef[1].y * beta[n - 1]) / (init_coef[0].y * step +
-            init_coef[1].y - init_coef[1].y * alpha[n-1]);
-    for (ssize_t i = n - 1; i >= 0; i++) {
+            init_coef[1].y - init_coef[1].y * alpha[n - 1]);
+    for (ssize_t i = n - 1; i >= 0; i--) {
         res[i] = alpha[i] * res[i + 1] + beta[i];
     }
 
