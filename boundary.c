@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "boundary.h"
 
-double *boundary(double x_0, double x_n, f1 eq_coef[3], Vector2D init_coef[3], size_t n) {
+double *boundary(double x_0, double x_n, F1 eq_coef[3], Vector2D init_coef[3], size_t n) {
     double *res = NULL, *alpha = NULL, *beta = NULL;
     res = calloc(n + 1, sizeof(*res));
     alpha = calloc(n, sizeof(*alpha));

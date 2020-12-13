@@ -4,20 +4,9 @@
 #include "RK.h"
 #include "boundary.h"
 
-extern f2 functions_single[];
-extern f3 functions_double[][2];
-
-double h1(double x) {
-    return -3 * x;
-}
-
-double h2(double x) {
-    return 2.0;
-}
-
-double h3(double x) {
-    return 1.5;
-}
+extern F2 functions_single[];
+extern F3 functions_double[][2];
+extern F1 functions_coefs[][3];
 
 int main(int argc, char *argv[]) {
     unsigned mode;
@@ -78,7 +67,7 @@ int main(int argc, char *argv[]) {
             }
         }
     } else {
-        f1 coefs[3] = {h1, h2, h3};
+        F1 coefs[3] = {functions_coefs[0][0], functions_coefs[0][1], functions_coefs[0][2]};
         Vector2D init[3] = {{0.0, 0.5}, {1.0, 1.0}, {1.3, 2.0}};
         double *res = boundary(0.7, 1.0, coefs, init, 3000);
 

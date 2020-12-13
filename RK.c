@@ -2,7 +2,7 @@
 
 #include "RK.h"
 
-double *rk_single(f2 func, Order order, double x0, double y0, double l, size_t n) {
+double *rk_single(F2 func, Order order, double x0, double y0, double l, size_t n) {
     // Создаём массив, содержащий значения по x для равномерной сетки от x0 до x0 + l с шагом l/n
     double *res = calloc(n + 1, sizeof(*res));
     if (res == NULL) {
@@ -37,7 +37,7 @@ double *rk_single(f2 func, Order order, double x0, double y0, double l, size_t n
     return res;
 }
 
-Vector2D *rk_double(f3 func1, f3 func2, Order order, double t0, double x0, double y0, double l, size_t n) {
+Vector2D *rk_double(F3 func1, F3 func2, Order order, double t0, double x0, double y0, double l, size_t n) {
     Vector2D *res = calloc(n + 1, sizeof(*res));
     if (res == NULL) {
         return NULL;
