@@ -26,13 +26,13 @@ int main(void) {
         if (equations_cnt == 1) {
             // Считываются начальные условия, длина отрезка на котором будет построена сетка, количество узлов
             // и номер функции для вычислений
-            double x_0, y_0, len;
+            data_t x_0, y_0, len;
             unsigned n_steps, n;
             if (scanf("%lf%lf%lf%u%u", &x_0, &y_0, &len, &n, &n_steps) != 5) {
                 fprintf(stderr, "Некоректные параметры вычислений");
                 return 2;
             }
-            double *res = rk_single(functions_single[n - 1], order == 2 ? RK_2 : RK_4, x_0, y_0, len, n_steps);
+            data_t *res = rk_single(functions_single[n - 1], order == 2 ? RK_2 : RK_4, x_0, y_0, len, n_steps);
             if (res == NULL) {
                 fprintf(stderr, "Ошибка времени выполнения\n");
                 return 1;
@@ -43,7 +43,7 @@ int main(void) {
         } else {
             // Считываются начальные условия, длина отрезка на котором будет построена сетка, количество узлов
             // и номер функции для вычислений
-            double t_0, x_0, y_0, len;
+            data_t t_0, x_0, y_0, len;
             unsigned n_steps, n;
             if (scanf("%lf%lf%lf%lf%u%u", &t_0, &x_0, &y_0, &len, &n, &n_steps) != 5) {
                 fprintf(stderr, "Некоректные параметры вычислений");
@@ -66,12 +66,12 @@ int main(void) {
             }
         }
     } else {
-        double x_0, x_n;
+        data_t x_0, x_n;
         unsigned n_steps, function_set;
         Vector2D init[3];
         scanf("%u%lf%lf%lf%lf%lf%lf%lf%lf%u", &function_set, &x_0, &x_n, &init[0].x, &init[1].x, &init[2].x,
               &init[0].y, &init[1].y, &init[2].y, &n_steps);
-        double *res = boundary(x_0, x_n, functions_coefs[function_set - 1], init, n_steps);
+        data_t *res = boundary(x_0, x_n, functions_coefs[function_set - 1], init, n_steps);
 
         for (size_t i = 0; i < n_steps + 1; i++) {
             printf("%lf %lf\n", x_0 + (x_n - x_0) / n_steps * i, res[i]);

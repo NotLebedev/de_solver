@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include "boundary.h"
 
-double *boundary(double x_0, double x_n, F1 eq_coef[3], Vector2D init_coef[3], size_t n) {
-    double *res = NULL, *alpha = NULL, *beta = NULL;
+data_t *boundary(data_t x_0, data_t x_n, F1 eq_coef[3], Vector2D init_coef[3], size_t n) {
+    data_t *res = NULL, *alpha = NULL, *beta = NULL;
     res = calloc(n + 1, sizeof(*res));
     alpha = calloc(n, sizeof(*alpha));
     beta = calloc(n, sizeof(*beta));
@@ -10,7 +10,7 @@ double *boundary(double x_0, double x_n, F1 eq_coef[3], Vector2D init_coef[3], s
         goto error;
     }
 
-    double step = (x_n - x_0) / n;
+    data_t step = (x_n - x_0) / n;
 
     // Вычисляем коэффициенты для метода прогонки
     alpha[0] = -init_coef[1].x / (init_coef[0].x * step - init_coef[1].x);
@@ -18,10 +18,10 @@ double *boundary(double x_0, double x_n, F1 eq_coef[3], Vector2D init_coef[3], s
 
     for (size_t i = 1; i < n; i++) {
         // Вычисляем элементы матрицы в i строке
-        double A = 1.0 / (step * step) - eq_coef[0](x_0 + i * step) / (2 * step);
-        double B = -2.0 / (step * step) + eq_coef[1](x_0 + i * step);
-        double C = 1.0 / (step * step) + eq_coef[0](x_0 + i * step) / (2 * step);
-        double F = eq_coef[2](x_0 + i * step);
+        data_t A = 1.0 / (step * step) - eq_coef[0](x_0 + i * step) / (2 * step);
+        data_t B = -2.0 / (step * step) + eq_coef[1](x_0 + i * step);
+        data_t C = 1.0 / (step * step) + eq_coef[0](x_0 + i * step) / (2 * step);
+        data_t F = eq_coef[2](x_0 + i * step);
 
         // По общей формуле вычисляем коэффициенты метода прогонки
         alpha[i] = -C / (A * alpha[i - 1] + B);

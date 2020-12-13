@@ -1,45 +1,44 @@
 #include <math.h>
 
-#include "RK.h"
-#include "boundary.h"
+#include "types.h"
 
-double f1(double x, double y) {
+data_t f1(data_t x, data_t y) {
     return - y / x;
 }
 
 F2 functions_single[] = {f1};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-double g11(double t, double x, double y) {
+data_t g11(data_t t, data_t x, data_t y) {
     return t + x - y * y + 2;
 }
 
-double g12(double t, double x, double y) {
+data_t g12(data_t t, data_t x, data_t y) {
     return sin(t - x) + 2.1 * y;
 }
 
 F3 functions_double[][2]= {{g11, g12}};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-double h11(double x) {
+data_t h11(data_t x) {
     return -3 * x;
 }
 
-double h12(double x) {
+data_t h12(data_t x) {
     return 2.0;
 }
 
-double h13(double x) {
+data_t h13(data_t x) {
     return 1.5;
 }
 
-double h21(double x) {
+data_t h21(data_t x) {
     return -1.0;
 }
 
-double h22(double x) {
+data_t h22(data_t x) {
     return 0;
 }
 
-double h23(double x) {
+data_t h23(data_t x) {
     return 0;
 }
 
