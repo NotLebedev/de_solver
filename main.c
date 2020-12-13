@@ -2,9 +2,22 @@
 #include <stdlib.h>
 
 #include "RK.h"
+#include "boundary.h"
 
 extern f2 functions_single[];
 extern f3 functions_double[][2];
+
+double h1(double x) {
+    return -3 * x;
+}
+
+double h2(double x) {
+    return 2.0;
+}
+
+double h3(double x) {
+    return 1.5;
+}
 
 int main(int argc, char *argv[]) {
     unsigned mode;
@@ -48,6 +61,7 @@ int main(int argc, char *argv[]) {
                 return 2;
             }
 
+
             Vector2D *res = rk_double(functions_double[n][0], functions_double[n][1], order == 2 ? RK_2 : RK_4,
                                       t_0, x_0, y_0, len, n_steps);
             if (res == NULL) {
@@ -63,7 +77,14 @@ int main(int argc, char *argv[]) {
                 printf("{%lf, %lf}, ", t_0 + i * (len / n_steps), res[i].y);
             }
         }
+    } else {
+        f1 coefs[3] = {h1, h2, h3};
+        Vector2D init[3] = {{0.0, 0.5}, {1.0, 1.0}, {1.3, 2.0}};
+        double *res = boundary(0.7, 1.0, coefs, init, 3000);
 
+        for (size_t i = 0; i < 3001; i++) {
+            printf("%lf %lf\n", 0.7 + (1.0 - 0.7) / 3000 * i, res[i]);
+        }
     }
     return 0;
 }
