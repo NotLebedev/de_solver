@@ -19,16 +19,28 @@ double g12(double t, double x, double y) {
 
 F3 functions_double[][2]= {{g11, g12}};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-double h1(double x) {
+double h11(double x) {
     return -3 * x;
 }
 
-double h2(double x) {
+double h12(double x) {
     return 2.0;
 }
 
-double h3(double x) {
+double h13(double x) {
     return 1.5;
 }
 
-F1 functions_coefs[][3] = {{h1, h2, h3}};
+double h21(double x) {
+    return -1.0;
+}
+
+double h22(double x) {
+    return 0;
+}
+
+double h23(double x) {
+    return 0;
+}
+
+F1 functions_coefs[][3] = {{h11, h12, h13}, {h21, h22, h23}};
