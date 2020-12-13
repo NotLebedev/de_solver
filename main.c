@@ -8,7 +8,7 @@ extern F2 functions_single[];
 extern F3 functions_double[][2];
 extern F1 functions_coefs[][3];
 
-int main(int argc, char *argv[]) {
+int main(void) {
     unsigned mode;
     scanf("%u", &mode);
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
             // и номер функции для вычислений
             double x_0, y_0, len;
             unsigned n_steps, n;
-            if (scanf("%lf%lf%lf%u%u", &x_0, &y_0, &len, &n_steps, &n) != 5) {
+            if (scanf("%lf%lf%lf%u%u", &x_0, &y_0, &len, &n, &n_steps) != 5) {
                 fprintf(stderr, "Некоректные параметры вычислений");
                 return 2;
             }
@@ -45,11 +45,10 @@ int main(int argc, char *argv[]) {
             // и номер функции для вычислений
             double t_0, x_0, y_0, len;
             unsigned n_steps, n;
-            if (scanf("%lf%lf%lf%lf%u%u", &t_0, &x_0, &y_0, &len, &n_steps, &n) != 5) {
+            if (scanf("%lf%lf%lf%lf%u%u", &t_0, &x_0, &y_0, &len, &n, &n_steps) != 5) {
                 fprintf(stderr, "Некоректные параметры вычислений");
                 return 2;
             }
-
 
             Vector2D *res = rk_double(functions_double[n][0], functions_double[n][1], order == 2 ? RK_2 : RK_4,
                                       t_0, x_0, y_0, len, n_steps);
