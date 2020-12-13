@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
                 return 1;
             }
             for (size_t i = 0; i < n_steps + 1; i++) {
-                printf(i == n_steps ? "{%lf, %lf}" : "{%lf, %lf}, ", 1.0 + i * (5.0 / 30), res[i]);
+                printf("%lf %lf\n", x_0 + i * (len / n_steps), res[i]);
             }
         } else {
             // Считываются начальные условия, длина отрезка на котором будет построена сетка, количество узлов
@@ -48,18 +48,19 @@ int main(int argc, char *argv[]) {
                 return 2;
             }
 
-            Vector2D *res = rk_double(functions_double[n][0], functions_double[n][1], RK_4, 0, 1.5, 0, 5.0, 300);
+            Vector2D *res = rk_double(functions_double[n][0], functions_double[n][1], order == 2 ? RK_2 : RK_4,
+                                      t_0, x_0, y_0, len, n_steps);
             if (res == NULL) {
                 fprintf(stderr, "Ошибка времени выполнения\n");
                 return 1;
             }
 
-            for (size_t i = 0; i < 301; i++) {
-                printf("{%lf, %lf}, ", i * (5.0 / 300), res[i].x);
+            for (size_t i = 0; i < n_steps + 1; i++) {
+                printf("{%lf, %lf}, ", t_0 + i * (len / n_steps), res[i].x);
             }
             printf("\n");
-            for (size_t i = 0; i < 301; i++) {
-                printf("{%lf, %lf}, ", i * (5.0 / 300), res[i].y);
+            for (size_t i = 0; i < n_steps + 1; i++) {
+                printf("{%lf, %lf}, ", t_0 + i * (len / n_steps), res[i].y);
             }
         }
 
