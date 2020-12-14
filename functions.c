@@ -6,7 +6,19 @@ data_t f1(data_t x, data_t y) {
     return -y / x;
 }
 
-F2 functions_single[] = {f1};
+data_t f2(data_t x, data_t y) {
+    return 3 * x * sin(x) - y;
+}
+
+data_t f3(data_t x, data_t y) {
+    return x * x * y + x * x;
+}
+
+data_t f4(data_t x, data_t y) {
+    return (y - y * y) * x;
+}
+
+F2 functions_single[] = {f1, f2, f3, f4};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 data_t g11(data_t t, data_t x, data_t y) {
