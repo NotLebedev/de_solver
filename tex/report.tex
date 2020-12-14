@@ -11,7 +11,7 @@
 \usepackage{mathtext}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\graphicspath{ {./} }
+\graphicspath{ {./img} }
 
 %Настройка листингов для языка C
 \usepackage{xcolor}
@@ -215,6 +215,16 @@ y_{i+1} = y_i + \frac{h}{6}(l_1 + 2 l_2 + 2 l_3 + l_4)
 Для проверки результатов выполнения программы на тестах был использован использован онлайн сервис символьных вычислений Wolfaram One. Были подобраны примеры с аналитическим решением, и построены графики их решений с наложением точек полученных в результате работы программы. Были проведены тесты для числа шагов $n = 10, 100, 1000$, а также для второго и четвёртого порядка точности.
 \begin{enumerate}
 \item
-
+Уравнение $y'(x) = -\frac{y}{x}$ с начальными условиями $y(1)=3$. Аналитическое решение $y = \frac{3}{x}$.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{test_1_1_2.png}
+\caption{Второй порядок точности}
+\centering
+\includegraphics[width=0.7\textwidth]{test_1_1_4.png}
+\caption{Четвёртый порядок точности}
+\end{figure}
+\par
+Численное решения при любой точности метода и любом числе шагов близко к аналитическому.
 \end{enumerate}
 \end{document}
