@@ -29,7 +29,15 @@ data_t g12(data_t t, data_t x, data_t y) {
     return sin(t - x) + 2.1 * y;
 }
 
-F3 functions_double[][2] = {{g11, g12}};
+data_t g21(data_t t, data_t x, data_t y) {
+    return -x - 5 * y;
+}
+
+data_t g22(data_t t, data_t x, data_t y) {
+    return x + y;
+}
+
+F3 functions_double[][2] = {{g11, g12}, {g21, g22}};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 data_t h11(data_t x) {
