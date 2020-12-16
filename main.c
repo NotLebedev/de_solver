@@ -44,12 +44,12 @@ int main(void) {
             // и номер функции для вычислений
             data_t t_0, x_0, y_0, len;
             unsigned n_steps, n;
-            if (scanf("%lf%lf%lf%lf%u%u", &t_0, &x_0, &y_0, &len, &n, &n_steps) != 5) {
+            if (scanf("%lf%lf%lf%lf%u%u", &t_0, &x_0, &y_0, &len, &n, &n_steps) != 6) {
                 fprintf(stderr, "Некоректные параметры вычислений");
                 return 2;
             }
 
-            Vector2D *res = rk_double(functions_double[n][0], functions_double[n][1], order == 2 ? RK_2 : RK_4,
+            Vector2D *res = rk_double(functions_double[n - 1][0], functions_double[n - 1][1], order == 2 ? RK_2 : RK_4,
                                       t_0, x_0, y_0, len, n_steps);
             if (res == NULL) {
                 fprintf(stderr, "Ошибка времени выполнения\n");
@@ -57,11 +57,7 @@ int main(void) {
             }
 
             for (size_t i = 0; i < n_steps + 1; i++) {
-                printf("{%lf, %lf}, ", t_0 + i * (len / n_steps), res[i].x);
-            }
-            printf("\n");
-            for (size_t i = 0; i < n_steps + 1; i++) {
-                printf("{%lf, %lf}, ", t_0 + i * (len / n_steps), res[i].y);
+                printf("%lf %lf %lf\n", t_0 + i * (len / n_steps), res[i].x, res[i].y);
             }
         }
     } else {
