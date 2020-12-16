@@ -37,7 +37,15 @@ data_t g22(data_t t, data_t x, data_t y) {
     return x + y;
 }
 
-F3 functions_double[][2] = {{g11, g12}, {g21, g22}};
+data_t g31(data_t t, data_t x, data_t y) {
+    return 4 * x + y - exp(2 * t);
+}
+
+data_t g32(data_t t, data_t x, data_t y) {
+    return y - 2 * x;
+}
+
+F3 functions_double[][2] = {{g11, g12}, {g21, g22}, {g31, g32}};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 data_t h11(data_t x) {
