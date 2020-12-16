@@ -10,6 +10,9 @@
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathtext}
 \usepackage{graphicx}
+
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{hyperref}
 \graphicspath{ {./img} }
 
@@ -229,7 +232,7 @@ y_{i+1} = y_i + \frac{h}{6}(l_1 + 2 l_2 + 2 l_3 + l_4)
 
 \newpage
 \item
-Уравнение $y'(x) = 3x sin(x) - y$ с начальными условиями $y(0)=2$. Аналитическое решение $y = \frac{1}{2} (e^{-x} - 3 (-1 + x) cos(x) + 3 x sin(x))$.
+Уравнение $y'(x) = 3x sin(x) - y$ с начальными условиями $y(0)=2$. Аналитическое решение $y = \frac{1}{2} (e^{-x} - 3 (-1 + x) \cos (x) + 3 x \sin (x))$.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{test_1_2_2.png}
@@ -239,7 +242,7 @@ y_{i+1} = y_i + \frac{h}{6}(l_1 + 2 l_2 + 2 l_3 + l_4)
 \caption{Четвёртый порядок точности}
 \end{figure}
 \par
-Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании второго порядка точности малое число шагов не влияет на точность результата.
+Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании четвёртого порядка точности малое число шагов не влияет на точность результата.
 
 \newpage
 \item
@@ -253,11 +256,11 @@ y_{i+1} = y_i + \frac{h}{6}(l_1 + 2 l_2 + 2 l_3 + l_4)
 \caption{Четвёртый порядок точности}
 \end{figure}
 \par
-Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании второго порядка точности малое число шагов не влияет на точность результата.
+Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании четвёртого порядка точности малое число шагов не влияет на точность результата.
 
 \newpage
 \item
-Уравнение $y'(x) = (y - y^2) x$ с начальными условиями $y(0)= 3$. Для построения графика функции была использованная встроенная функция {\ttfamily NDsolve}, находящая численное решение уравнения.
+Уравнение $y'(x) = (y - y^2) x$ с начальными условиями $y(0)= 3$. Аналитическое решение $y = \left( 1- \frac{2}{3} e^{-\frac{1}{2}x^2} \right)^{-1}$.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{test_1_4_2.png}
@@ -267,22 +270,90 @@ y_{i+1} = y_i + \frac{h}{6}(l_1 + 2 l_2 + 2 l_3 + l_4)
 \caption{Четвёртый порядок точности}
 \end{figure}
 \par
-Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании второго порядка точности малое число шагов не влияет на точность результата.
+Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании четвёртого порядка точности малое число шагов не влияет на точность результата.
 
 \newpage
 \item
-Уравнение $y'(x) = (y - y^2) x$ с начальными условиями $y(0)= 3$. Для построения графика функции была использованная встроенная функция {\ttfamily NDsolve}, находящая численное решение уравнения.
+Система $x' = -x -5y, y' = x + y$ с начальными условиями $x(0) = 2, y(0)= 3$. Аналитическое решение $x = 2 \cos (2 t) - 17 \cos (t) \sin(t), y = 3 \cos (2 t) + 5 \cos (t) \sin (t)$.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\textwidth]{test_1_5_2_x.png}
-\includegraphics[width=0.7\textwidth]{test_1_5_2_y.png}
-\caption{Второй порядок точности}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_5_2_x.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_5_2_y.png}
+\end{subfigure}
+\caption{Второй порядок точности, графики $x(t)$ и $y(t)$ соответственно}
 \centering
-\includegraphics[width=0.7\textwidth]{test_1_5_4_x.png}
-\includegraphics[width=0.7\textwidth]{test_1_5_4_y.png}
-\caption{Четвёртый порядок точности}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_5_4_x.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_5_4_y.png}
+\end{subfigure}
+\caption{Четвёртый порядок точности, графики $x(t)$ и $y(t)$ соответственно}
 \end{figure}
 \par
-Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании второго порядка точности малое число шагов не влияет на точность результата.
+Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании четвёртого порядка точности малое число шагов не влияет на точность результата.
+
+\newpage
+\item
+Система $x' = 4x + y - e^{2t}, y' = y - 2x$ с начальными условиями $x(0) = 1, y(0)= -1$. Аналитическое решение $x = e^{2 t} (2 - e^t + t), y = e^{2 t} (e^t - 2 (1 + t))$.
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_6_2_x.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_6_2_y.png}
+\end{subfigure}
+\caption{Второй порядок точности, графики $x(t)$ и $y(t)$ соответственно}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_6_4_x.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_6_4_y.png}
+\end{subfigure}
+\caption{Четвёртый порядок точности, графики $x(t)$ и $y(t)$ соответственно}
+\end{figure}
+\par
+Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании четвёртого порядка точности малое число шагов не влияет на точность результата.
+
+\newpage
+\item
+Система $x' = t + x - y^2 +2, y' = \sin(t - x) + 2,1 y$ с начальными условиями $x(0) = 1.5, y(0)= 0$. Аналитическое решение найти не удалось.
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_7_2_x.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_7_2_y.png}
+\end{subfigure}
+\caption{Второй порядок точности, графики $x(t)$ и $y(t)$ соответственно}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_7_4_x.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{test_1_7_4_y.png}
+\end{subfigure}
+\caption{Четвёртый порядок точности, графики $x(t)$ и $y(t)$ соответственно}
+\end{figure}
+\par
+Численное решения при использовании второго порядка точности и малого числа шагов существенно отличается от аналитического. При использовании четвёртого порядка точности малое число шагов не влияет на точность результата.
 \end{enumerate}
 \end{document}
