@@ -61,16 +61,42 @@ data_t h13(data_t x) {
 }
 
 data_t h21(data_t x) {
-    return -1.0;
+    return 0.0;
 }
 
 data_t h22(data_t x) {
-    return 0;
+    return -6.0 / (x * x);
 }
 
 data_t h23(data_t x) {
     return 0;
 }
 
+data_t h31(data_t x) {
+    return -2.0;
+}
+
+data_t h32(data_t x) {
+    return 1.0;
+}
+
+data_t h33(data_t x) {
+    return exp(x);
+}
+
+data_t h41(data_t x) {
+    return 0.0;
+}
+
+data_t h42(data_t x) {
+    return -1.0;
+}
+
+data_t h43(data_t x) {
+    return 1 / x - 2 / (x * x * x);
+}
+
 F1 functions_coefs[][3] = {{h11, h12, h13},
-                           {h21, h22, h23}};
+                           {h21, h22, h23},
+                           {h31, h32, h33},
+                           {h41, h42, h43}};
