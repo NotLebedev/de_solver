@@ -34,6 +34,8 @@ data_t *boundary(data_t x_0, data_t x_n, F1 eq_coef[3], Vector2D init_coef[3], s
         res[i] = alpha[i] * res[i + 1] + beta[i];
     }
 
+    free(alpha);
+    free(beta);
     return res;
     error:
     free(res);

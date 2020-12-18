@@ -67,6 +67,10 @@ int main(void) {
         scanf("%u%lf%lf%lf%lf%lf%lf%lf%lf%u", &function_set, &x_0, &x_n, &init[0].x, &init[1].x, &init[2].x,
               &init[0].y, &init[1].y, &init[2].y, &n_steps);
         data_t *res = boundary(x_0, x_n, functions_coefs[function_set - 1], init, n_steps);
+        if (res == NULL) {
+            fprintf(stderr, "Ошибка времени выполнения\n");
+            return 1;
+        }
 
         for (size_t i = 0; i < n_steps + 1; i++) {
             printf("%lf %lf\n", x_0 + (x_n - x_0) / n_steps * i, res[i]);
